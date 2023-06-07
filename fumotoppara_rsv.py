@@ -1,6 +1,6 @@
 import time
 from selenium.webdriver.common.by import By
-from mylib import ScrFunc
+from Private.Scraping.lib import ScrFunc
 
 weekday = '土'
 
@@ -11,13 +11,13 @@ def main():
     while(True):
             
         #Init処理
-        driver = ScrFunc.GetDriver()
+        driver = ScrFunc.GetDriver("https://reserve.fumotoppara.net/reserved/reserved-calendar-list")
 
         #空き曜日を検出してリストに格納
         available_day = Getavailable(driver)
         #LINEで空き日程を通知.
         if ( pre_result != available_day):
-            ScrFunc.Notify_LINE(available_day)
+            ScrFunc.Notify_LINE_avail(available_day, "humotoppara_token")
             pre_result = available_day
 
         driver.quit()
