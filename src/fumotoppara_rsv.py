@@ -1,10 +1,12 @@
-import time
+import time, sys
 from selenium.webdriver.common.by import By
-from Private.Scraping.lib import ScrFunc
+from os.path import dirname, abspath
+sys.path.append(dirname(dirname(abspath(__file__))))
+from Private.Scraping.lib import ScrFunc, param
 
 weekday = '土'
 
-test_mode = False
+test_mode = param.debug_mode
 def main():
     pre_result = [] #空きの変化検出用
 
