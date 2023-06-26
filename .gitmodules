@@ -1,3 +1,6 @@
 [submodule "Private"]
-	path = Private
+	path = mylib
 	url = git@github.com:yoshitomen/Private.git
+[submodule "mylib"]
+	path = mylib
+	url = git@github.com:yoshitomen/private.git

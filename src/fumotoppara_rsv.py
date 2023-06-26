@@ -2,7 +2,7 @@ import time, sys
 from selenium.webdriver.common.by import By
 from os.path import dirname, abspath
 sys.path.append(dirname(dirname(abspath(__file__))))
-from Private.Scraping.lib import ScrFunc, param
+from mylib.scraping.lib import ScrFunc, param
 
 weekday = '土'
 
