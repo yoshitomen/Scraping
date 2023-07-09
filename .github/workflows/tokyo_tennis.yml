@@ -5,8 +5,8 @@ on:
   workflow_dispatch:
     branches:
       - master
-  schedule: #execute every 6min.
-    - cron: '*/6 * * * *' 
+  #schedule: #execute every 6min.
+  #  - cron: '*/6 * * * *' 
   #push:
 
 
