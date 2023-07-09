@@ -1,0 +1,37 @@
+
+name: Scraping
+
+on: 
+  workflow_dispatch:
+    branches:
+      - master
+  schedule: #execute every 6min.
+    - cron: '*/6 * * * *' 
+  #push:
+
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+
+    steps:
+
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install lib
+        run: |
+          python3 -m pip install selenium
+          python3 -m pip install webdriver-manager
+          python3 -m pip install chromedriver-binary
+          python3 -m pip install requests
+          python3 -m pip install selenium
+
+      - name: search vacant tennis-coat
+        run: python3 src/tokyo_tenniscoat_act.py    
