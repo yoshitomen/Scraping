@@ -19,8 +19,20 @@ jobs:
         python-version: ["3.11"]
 
     steps:
+      - uses: actions/checkout@v2
+      - name: SSH setting for access private submodule
+        env:
+          TOKEN: ${{ secrets.PRIVATE_TOKEN }}
+        run: |
+          mkdir -p /home/runner/.ssh/
+          echo -e "$TOKEN" > /home/runner/.ssh/id_rsa
+          chmod 600 /home/runner/.ssh/id_rsa
 
-      - uses: actions/checkout@v3
+      - name: Checkout submodules
+        shell: bash
+        run: git submodule update --init --force --recursive
+
+      - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
