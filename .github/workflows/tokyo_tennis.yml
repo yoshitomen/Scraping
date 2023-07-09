@@ -1,12 +1,11 @@
 
-name: Scraping
-
+name: Search vacant tennis-coat
 on: 
   workflow_dispatch:
     branches:
       - master
-  #schedule: #execute every 6min.
-  #  - cron: '*/6 * * * *' 
+  schedule: #execute every 6min.
+    - cron: '*/6 * * * *' 
   #push:
 
 
@@ -22,7 +21,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: SSH setting for access private submodule
         env:
-          TOKEN: ${{ secrets.PRIVATE_TOKEN }}
+          TOKEN: ${{ secrets.PRIVATE_TOKEN }} #RSA key (not OPENSSH)
         run: |
           mkdir -p /home/runner/.ssh/
           echo -e "$TOKEN" > /home/runner/.ssh/id_rsa
